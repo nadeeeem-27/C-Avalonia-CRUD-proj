@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="EmployeesList.Views.MainWindow"
+        Title="Employee Management" Width="500" Height="700"
+		xmlns:local="using:EmployeesList.Models"
+		>
+
+	<StackPanel Margin="20">
+
+		<!-- Name Field -->
+		<StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+			<TextBlock Text="Name:" VerticalAlignment="Center" />
+			<TextBox x:Name="NameTextBox" Watermark="Enter Employee Name" Width="200" Margin="5,0" />
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+			<TextBlock Text="Department:" VerticalAlignment="Center" />
+			<TextBox x:Name="DepartmentTextBox" Watermark="Enter Department" Width="200" Margin="5,0" />
+		</StackPanel>
+
+		<StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+			<TextBlock Text="Date of Joining:" VerticalAlignment="Center" />
+			<DatePicker x:Name="DateOfJoiningPicker" Width="300" Margin="5,0" />
+		</StackPanel>
+
+		<StackPanel Height="20"/>
+
+
+		<Grid>
+			<ScrollViewer Height="300">
+				<StackPanel>
+					<ListBox x:Name="EmployeeListBox" >
+						<ListBox.ItemTemplate>
+							<DataTemplate x:DataType="local:Employee">
+								<StackPanel>
+									<TextBlock Text="{Binding ID}" FontWeight="Bold"/>
+									<TextBlock Text="{Binding Name}" Foreground="Gray"/>
+									<TextBlock Text="{Binding Department}" Foreground="DarkGreen"/>
+									<TextBlock Text="{Binding DateOfJoining}" Foreground="DarkGreen"/>
+								</StackPanel>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+					</ListBox>
+				</StackPanel>
+			</ScrollViewer>
+		</Grid>
+		<!-- Buttons for CRUD Operations -->
+		<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+			<Button x:Name="AddButton" Content="Add Employee" Width="150" Margin="5"/>
+			<Button x:Name="EditButton" Content="Edit Employee" Width="150" Margin="5"/>
+			<Button x:Name="DeleteButton" Content="Delete Employee" Width="150" Margin="5"/>
+		</StackPanel>
+		
+
+	</StackPanel>
+
+</Window>
